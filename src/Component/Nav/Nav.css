@@ -1,0 +1,9 @@
+.nav-box {
+  display:  flex;
+  flex-direction:  column;
+  left:  0px;
+  width: 100px;
+  position:  fixed;
+  background:  gray;
+  height: 100vh;
+}

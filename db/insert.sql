@@ -1,8 +1,10 @@
 INSERT INTO users_table (
   username,
-  password
+  password,
+  profile_pic,
 )
 VALUES (
     ${username},
     ${password},
+    ${profile_pic},
 );

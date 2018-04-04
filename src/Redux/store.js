@@ -2,7 +2,8 @@ import {
   UPDATE_ID,
   UPDATE_PROFILE_PICTURE,
   UPDATE_USERNAME
-} from './constraints'
+} from './constraints';
+import axios from 'axios';
 
 export function updateUsername(text){
   return {
@@ -10,12 +11,12 @@ export function updateUsername(text){
       payload: text
   }
 }
-export function updateProfilePicture(text){
-  return {
-      type: UPDATE_PROFILE_PICTURE,
-      payload: text
-  }
+
+export function updateProfilePicture(){
+  return axios.get('/api/profilePic');
 }
+
+
 export function updateID(text){
   return {
       type: UPDATE_ID,
