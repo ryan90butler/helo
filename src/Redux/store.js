@@ -18,8 +18,5 @@ export function updateProfilePicture(){
 
 
 export function updateID(text){
-  return {
-      type: UPDATE_ID,
-      payload: text
-  }
+  return axios.get('/api/profilePic');
 }

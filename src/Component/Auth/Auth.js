@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {updateUsername, updateProfilePicture} from '../../Redux/store';
+import {updateUsername, updateProfilePicture, updateID} from '../../Redux/store';
 import './Auth.css';
 import helo_logo from '../../assets/helo_logo.png';
 
@@ -25,7 +25,7 @@ class Auth extends Component {
     })
         .then((response)=>{
             if(response.data.success){
-                this.props.history.push('/dashboard');
+              this.props.history.push('/dashboard');
             }else{
                 alert("The password or your username is incorrect")
             }
@@ -58,7 +58,7 @@ class Auth extends Component {
               <div>
                <label>Username</label>
             <br/>
-                <input className="login-input"  name="username" value={this.state.username} onChange={e=>this.handleChange(e, `username`)} type="text"/>
+                <input className="login-input" name="username" value={this.state.username} onChange={e=>this.handleChange(e, `username`)} type="text"/>
               </div>
             <br/>
               <div>

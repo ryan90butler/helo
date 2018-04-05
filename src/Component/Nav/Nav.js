@@ -41,6 +41,7 @@ class Nav extends Component {
     super(props)
     this.state = {
       profilePicture: '',
+      updateID: ''
   }
 
   this.sessionDestroy = this.sessionDestroy.bind(this);
@@ -50,10 +51,18 @@ class Nav extends Component {
   componentWillMount(){
    updateProfilePicture()
         .then(items => {
+          this.props.dispatch(updateID(items.data[0].id))
+          console.log(this.props)
            this.setState({
-               profilePicture: items.data[0].profile_pic
+               profilePicture: items.data[0].profile_pic,
            })
         })
+  //  updateID()
+  //       .then(items => {
+  //          this.setState({
+  //              profilePicture: items.data[0].profile_pic
+  //          })
+  //       })
   }
 
   sessionDestroy(){
@@ -73,15 +82,16 @@ class Nav extends Component {
   }else{
   return(
     <div className="nav-box">
+    <div className="user-info">
+      <img className="user-image"src={this.state.profilePicture}/>
       {this.props.updateUsername}
-      <img src={this.state.profilePicture} />
-      <img src={home_logo}/>
-      <img src={new_logo}/>
-      <img src={shut_down}/>
-
-      <Link to='/dashboard'><button>Home</button></Link>
-      <Link to='/post/:id'><button>New Post</button></Link>
-      <button className='header-logout' onClick={this.sessionDestroy}>Logout</button>
+      {this.props.updateID}
+      </div>
+      <div className="nav-top-buttons">
+      <Link to='/dashboard'><img className="nav-button" src={home_logo}/></Link>
+      <Link to='/post/:id'><img className="nav-button" src={new_logo}/></Link>
+      </div>
+      <button className="nav-logout-button" onClick={this.sessionDestroy}><img className="logout-button" src={shut_down}/></button>
     </div>
   )
 }

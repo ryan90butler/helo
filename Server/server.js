@@ -39,13 +39,13 @@ massive(process.env.CONNECTION_STRING)
       const { username, password} = req.body;
       let profile_pic = `https://robohash.org/${username}`
 
-      req.db.users_table.findOne({ username, password, profile_pic })
+      req.db.users_table.findOne({ username, password, profile_pic})
           .then(user => {
               if (!user) {
                   return res.status(401).send({ success: false, message: 'it did not work' });
               }
               req.session.user = user.id
-              res.send({ user, success: true, message: 'Logged in successfully', username, profile_pic });
+              res.send({ user, success: true, message: 'Logged in successfully', username, profile_pic});
           })
           .catch(err=>{
             console.log("invalid credentials")
